@@ -57,7 +57,7 @@ public class ApplicationSettings {
     }
 
     public static String getUrl() {
-        return url;
+        return devUrl;
     }
 
     public static String getEnvironmentType() {

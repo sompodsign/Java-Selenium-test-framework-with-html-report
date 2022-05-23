@@ -603,6 +603,7 @@ public class DriverActions {
      * @param imageName - Takes the name of the image
      */
     public void uploadImage(WebElement element, String imageName) {
+        ApplicationSettings.setImageFolderPath("src/testdata/images/");
         try {
             File file = new File(ApplicationSettings.getImageFolderPath() + imageName); // Fetching the file path
             System.out.println("uploaded image on driveractions: " + file.getAbsolutePath());
@@ -688,5 +689,15 @@ public class DriverActions {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public boolean isElementVisibleWithText(String text) {
+        try {
+            Browser.getWait(2).until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(),'" + text + "')]"))));
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 }

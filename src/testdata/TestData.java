@@ -194,9 +194,9 @@ public class TestData {
         return "password";
     }
 
-    public static String getRandomPhoto() {
+    public static String getRandomImage() {
 
-        String[] photos = {"banner.png", "coupon.jpg", "icon.png", "main_banner.jpg", "test-image-1.jpg", "est_profile_image.png", "unidevGO.jpg"};
+        String[] photos = {"banner.png", "coupon.jpg", "icon.png", "main_banner.jpg", "passport-id.jpg", "test-image-1.jpg", "test_profile_image.png", "unidevGO.jpg"};
         return photos[(int) (Math.random() * photos.length)];
     }
 
@@ -211,6 +211,10 @@ public class TestData {
         return username;
 
 
+    }
+
+    public static String getRandomWebsite() {
+        return "www."+getRandomLastName().toLowerCase()+getRandomDigits(3)+getRandomWord().toLowerCase()+".com";
     }
 
 

@@ -14,6 +14,7 @@ import helper.DriverWaits;
 import pages.PagesFactory;
 
 import DataModel.TestDataModel;
+import testdata.TestData;
 
 
 public class HomePage extends Base {
@@ -24,13 +25,61 @@ public class HomePage extends Base {
     private final DriverWaits driverWaits;
     private final DriverActions driverActions;
 
-    // Start: Home screen web elements
+    // START: Homepage elements
+    @FindBy(xpath = "//div[@class='form-control share-post']")
+    WebElement sharePostButton;
+
+    @FindBy(xpath = "//textarea[@placeholder='Share what is on your mind...']")
+    WebElement sharePostTextArea;
+
+    @FindBy(xpath = "input[type='file'][accept='image/*']")
+    WebElement imageUploadInput;
+
+    @FindBy(xpath = "//input[@id='File']")
+    WebElement videoUploadInput;
+
+    @FindBy(xpath = "//button[@class='btn btn-post waves-effect waves-light']")
+    WebElement postButton;
+
+    // END: Homepage elements
+
 
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
         this.driverActions = PagesFactory.getDriverActionsObject();
         this.driverWaits = PagesFactory.getDriverWaitsObject();
+    }
+
+    public boolean checkHomePageLoaded() {
+        try {
+            System.out.println("Checking Home Page loaded");
+            return driverWaits.waitUntilVisible(10, sharePostButton);
+        }
+        catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean shareTextOnTimeline() {
+        try {
+            int step = 0;
+
+            driverActions.clickOnWebElementWithActionsClass(sharePostButton);
+            step++;
+            System.out.println("Step " + step + ": Click on share post button");
+
+            String text = TestData.getRandomWord();
+            driverActions.typeText(sharePostTextArea, text);
+            step++;
+            System.out.println("Step " + step + ": Type text: " + text);
+
+            return driverWaits.waitUntilVisible(20, driver.findElement(By.xpath("//*[contains(text(),'" + text + "')]")));
+
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

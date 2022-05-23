@@ -3,12 +3,23 @@
 <suite name="All Test Suite">
   <test name="login">
     <classes>
+<!--        Loginpage testcases-->
       <class name="main.java.testcases.LoginPageTest">
         <methods>
-          <include name="validateForgetPasswordFunctionalityForARegisteredUser"/>
+<!--          <include name="validateJobSeekerSignUpFunctionality"/>-->
+<!--          <include name="validateFreelancerSignUpFunctionality"/>-->
+<!--          <include name="validateOthersSignUpFunctionality"/>-->
+<!--          <include name="validateBusinessOwnerSignupFunctionality"/>-->
+          <include name="validateLoginFunctionality"/>
         </methods>
       </class>
-
+<!--        Homepage testcases-->
+        <class name="main.java.testcases.HomepageTest">
+            <methods>
+                <include name="validateHomePageLoadSuccessfully"/>
+                <include name="validateUserCanShareTextOnTimeline"/>
+            </methods>
+        </class>
 
     </classes>
   </test>

@@ -32,7 +32,7 @@ public class HomePage extends Base {
     @FindBy(xpath = "//textarea[@placeholder='Share what is on your mind...']")
     WebElement sharePostTextArea;
 
-    @FindBy(xpath = "input[type='file'][accept='image/*']")
+    @FindBy(xpath = "//span[normalize-space()='Images']/following-sibling::input")
     WebElement imageUploadInput;
 
     @FindBy(xpath = "//input[@id='File']")
@@ -40,6 +40,9 @@ public class HomePage extends Base {
 
     @FindBy(xpath = "//button[@class='btn btn-post waves-effect waves-light']")
     WebElement postButton;
+
+    @FindBy(xpath = "//div[@class='media-uploaded']")
+    List<WebElement> uploadedImages;
 
     // END: Homepage elements
 
@@ -74,8 +77,38 @@ public class HomePage extends Base {
             step++;
             System.out.println("Step " + step + ": Type text: " + text);
 
-            return driverWaits.waitUntilVisible(20, driver.findElement(By.xpath("//*[contains(text(),'" + text + "')]")));
+            return driverWaits.isElementVisibleWithText(20, text);
 
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean shareTextOnTimelineWithImage() {
+        try {
+            int step = 0;
+
+            driverActions.clickOnWebElementWithActionsClass(sharePostButton);
+            step++;
+            System.out.println("Step " + step + ": Click on share post button");
+
+            String text = TestData.getRandomWord();
+            driverActions.typeText(sharePostTextArea, text);
+            step++;
+            System.out.println("Step " + step + ": Type text: " + text);
+
+            driverActions.uploadImage(imageUploadInput, TestData.getRandomImage());
+//            uploadedImages.forEach(element -> driverWaits.waitUntilVisible(20, element));
+            step++;
+            System.out.println("Step " + step + ": Upload image");
+            driverWaits.waitFiveSeconds();
+
+            driverActions.clickOnWebElementWithActionsClass(postButton);
+            step++;
+            System.out.println("Step " + step + ": Click on post button");
+
+            return driverWaits.waitUntilVisible(30, (WebElement) By.xpath("//*[normalize-space()='" + text + "']"));
 
         } catch (Exception e) {
             throw new RuntimeException(e);

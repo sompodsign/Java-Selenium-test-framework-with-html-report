@@ -42,4 +42,19 @@ public class HomepageTest extends BaseTest {
         }
     }
 
+    @Test
+    public void validateUserCanShareTextOnTimelineWithImage() {
+        try {
+            initializeTest("User can share text on timeline with image", "This test verifies that the user can share text on timeline with image", "Sanity Test");
+
+            HomePage homepage = PagesFactory.getHomePage();
+            boolean result = homepage.shareTextOnTimelineWithImage();
+
+            Assert.assertTrue(result, "Text is not shared on timeline with image");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

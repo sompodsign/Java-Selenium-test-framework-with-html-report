@@ -22,7 +22,7 @@ public class TestData {
     }
 
     public static String getRandomWord() {
-        return "Lorem";
+        return getRandomParagraph().split(" ")[(int) (Math.random() * getRandomParagraph().split(" ").length)];
     }
 
     public static String getRandomNumber() {

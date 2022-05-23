@@ -691,13 +691,4 @@ public class DriverActions {
         }
     }
 
-    public boolean isElementVisibleWithText(String text) {
-        try {
-            Browser.getWait(2).until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(),'" + text + "')]"))));
-            return true;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return false;
-    }
 }

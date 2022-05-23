@@ -17,7 +17,8 @@
         <class name="main.java.testcases.HomepageTest">
             <methods>
                 <include name="validateHomePageLoadSuccessfully"/>
-                <include name="validateUserCanShareTextOnTimeline"/>
+<!--                <include name="validateUserCanShareTextOnTimeline"/>-->
+                <include name="validateUserCanShareTextOnTimelineWithImage"/>
             </methods>
         </class>
 

@@ -1,10 +1,7 @@
 package helper;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -157,5 +154,9 @@ public class DriverWaits {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public boolean isElementVisibleWithText(int waitTime, String text) {
+		return waitUntilVisible(waitTime, (WebElement) By.xpath("//*[contains(text(),'" + text + "')]"));
 	}
 }

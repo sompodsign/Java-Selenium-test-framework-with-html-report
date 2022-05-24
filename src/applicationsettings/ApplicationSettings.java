@@ -27,6 +27,8 @@ public class ApplicationSettings {
     private static final String productionTestDataFilePath = ".//src//testdata//production_test_data.xls";
     private static final String devTestDataFilePath = ".//src//testdata//dev_test_data.xls";
 
+    public static String videoFolderPath = "src/testdata/videos/";
+
     private ApplicationSettings () { // private constructor
     }
 
@@ -137,6 +139,10 @@ public class ApplicationSettings {
 	public static String getImageFolderPath() {
 		return imageFolderPath;
 	}
+
+    public static String getVideoFolderPath() {
+        return videoFolderPath;
+    }
 
 	public static void setImageFolderPath(String imageFolderPath) {
 		ApplicationSettings.imageFolderPath = imageFolderPath;

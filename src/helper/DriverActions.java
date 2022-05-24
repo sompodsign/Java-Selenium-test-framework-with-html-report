@@ -616,6 +616,22 @@ public class DriverActions {
     }
 
     /**
+     * Generic upload method
+     */
+    public void upload(WebElement element, String folderPath, String fileName) {
+        ApplicationSettings.setImageFolderPath(folderPath);
+        try {
+            File file = new File(ApplicationSettings.getImageFolderPath() + fileName); // Fetching the file path
+            System.out.println("uploaded "+fileName+ " on driveractions: " + file.getAbsolutePath());
+            element.sendKeys(file.getAbsolutePath());
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
+    }
+
+    /**
      * Implementing clickOnWebElementUsingJavaScript functionality.
      * Following is a helper method designed click on an webelement using JavaScript executor.
      *

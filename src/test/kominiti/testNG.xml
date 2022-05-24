@@ -18,7 +18,8 @@
             <methods>
                 <include name="validateHomePageLoadSuccessfully"/>
 <!--                <include name="validateUserCanShareTextOnTimeline"/>-->
-                <include name="validateUserCanShareTextOnTimelineWithImage"/>
+<!--                <include name="validateUserCanShareTextOnTimelineWithImage"/>-->
+                <include name="validateUserCanShareVideosOnTimeline"/>
             </methods>
         </class>
 

@@ -156,6 +156,14 @@ public class DriverWaits {
 		}
 	}
 
+	public void waitOneSeconds() {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public boolean isElementVisibleWithText(int waitTime, String text) {
 		return waitUntilVisible(waitTime, (WebElement) By.xpath("//*[contains(text(),'" + text + "')]"));
 	}

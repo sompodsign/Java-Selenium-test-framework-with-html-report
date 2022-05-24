@@ -217,5 +217,10 @@ public class TestData {
         return "www."+getRandomLastName().toLowerCase()+getRandomDigits(3)+getRandomWord().toLowerCase()+".com";
     }
 
+    public static String getRandomVideo() {
+        String[] videos = {"test-video-1.mp4"};
+        return videos[(int) (Math.random() * videos.length)];
+    }
+
 
 }

@@ -57,4 +57,21 @@ public class HomepageTest extends BaseTest {
         }
     }
 
+    @Test
+    public void validateUserCanShareVideosOnTimeline() {
+        try {
+            initializeTest("User can share videos on timeline", "This test verifies that the user can share videos on timeline", "Sanity Test");
+
+            HomePage homepage = PagesFactory.getHomePage();
+            boolean result = homepage.shareVideoOnTimeline();
+
+            Assert.assertTrue(result, "Video is not shared on timeline");
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

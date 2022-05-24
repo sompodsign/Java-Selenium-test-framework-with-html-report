@@ -44,6 +44,9 @@ public class HomePage extends Base {
     @FindBy(xpath = "//div[@class='media-uploaded']")
     List<WebElement> uploadedImages;
 
+    @FindBy(xpath = "//span[normalize-space()='a few seconds ago']")
+    WebElement aFewSecondsAgo;
+
     // END: Homepage elements
 
 
@@ -66,7 +69,8 @@ public class HomePage extends Base {
 
     public boolean shareTextOnTimeline() {
         try {
-            int step = 0;
+            int step;
+            step = 0;
 
             driverActions.clickOnWebElementWithActionsClass(sharePostButton);
             step++;
@@ -87,19 +91,21 @@ public class HomePage extends Base {
 
     public boolean shareTextOnTimelineWithImage() {
         try {
+
             int step = 0;
 
             driverActions.clickOnWebElementWithActionsClass(sharePostButton);
             step++;
             System.out.println("Step " + step + ": Click on share post button");
 
+//            driverWaits.waitOneSeconds();
             String text = TestData.getRandomWord();
+            driverActions.clickOnWebElementWithActionsClass(sharePostTextArea);
             driverActions.typeText(sharePostTextArea, text);
             step++;
             System.out.println("Step " + step + ": Type text: " + text);
 
             driverActions.uploadImage(imageUploadInput, TestData.getRandomImage());
-//            uploadedImages.forEach(element -> driverWaits.waitUntilVisible(20, element));
             step++;
             System.out.println("Step " + step + ": Upload image");
             driverWaits.waitFiveSeconds();
@@ -109,6 +115,32 @@ public class HomePage extends Base {
             System.out.println("Step " + step + ": Click on post button");
 
             return driverWaits.waitUntilVisible(30, (WebElement) By.xpath("//*[normalize-space()='" + text + "']"));
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean shareVideoOnTimeline() {
+        try {
+            int step;
+            step = 0;
+
+            driverActions.clickOnWebElementWithActionsClass(sharePostButton);
+            step++;
+            System.out.println("Step " + step + ": Click on share post button");
+
+            driverActions.upload(videoUploadInput, ApplicationSettings.getVideoFolderPath(), TestData.getRandomVideo());
+            step++;
+            System.out.println("Step " + step + ": Upload video");
+            driverWaits.waitFiveSeconds();
+
+            driverActions.clickOnWebElementWithActionsClass(postButton);
+            step++;
+            System.out.println("Step " + step + ": Click on post button");
+
+            return driverWaits.waitUntilVisible(25, aFewSecondsAgo);
+
 
         } catch (Exception e) {
             throw new RuntimeException(e);

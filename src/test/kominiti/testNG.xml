@@ -20,7 +20,12 @@
 <!--                <include name="validateUserCanShareTextOnTimeline"/>-->
 <!--                <include name="validateUserCanShareTextOnTimelineWithImage"/>-->
 <!--                <include name="validateUserCanShareVideosOnTimeline"/>-->
-                <include name="validateUserCanWriteArticleAndShare"/>
+<!--                <include name="validateUserCanWriteArticleAndShare"/>-->
+            </methods>
+        </class>
+        <class name="main.java.testcases.DashboardPageTest">
+            <methods>
+                <include name="validateDashboardPageLoadSuccessfully"/>
             </methods>
         </class>
 

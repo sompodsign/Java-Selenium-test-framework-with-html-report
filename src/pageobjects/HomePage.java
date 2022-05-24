@@ -47,6 +47,33 @@ public class HomePage extends Base {
     @FindBy(xpath = "//span[normalize-space()='a few seconds ago']")
     WebElement aFewSecondsAgo;
 
+    @FindBy(xpath = "//span[normalize-space()='Write an article']")
+    WebElement writeArticleButton;
+
+    @FindBy(xpath = "//span[contains(text(), \"Change cover\")]/following-sibling::input")
+    WebElement articleCover;
+
+    @FindBy(xpath = "//textarea[@id='headline']")
+    WebElement articleHeadline;
+
+    @FindBy(xpath = "//div[@aria-label='write here..']")
+    WebElement writeArticleTextArea;
+
+    @FindBy(xpath = "//input[@placeholder='Paste the links here and press Enter to Add']")
+    WebElement pasteLinkInput;
+
+    @FindBy(xpath = "//span[@class='btn btn-round-link btn-icon-file']//input[@type='file']")
+    WebElement articleImageUploadField;
+
+    @FindBy(xpath = "//span[@class='btn btn-round-link btn-icon-file btn-video-attchment']//input[@type='file']")
+    WebElement articleVideoUploadField;
+
+    @FindBy(xpath = "//span[normalize-space()='Publish']")
+    WebElement publishButton;
+
+    @FindBy(xpath = "//*[contains(text(), \"Article published successfully\")]")
+    WebElement articlePublishedSuccessfullyMessage;
+
     // END: Homepage elements
 
 
@@ -147,6 +174,45 @@ public class HomePage extends Base {
         }
     }
 
+    public boolean writeArticleAndShare() {
+        try {
+            int step;
+            step = 0;
 
+            driverActions.clickOnWebElementWithActionsClass(writeArticleButton);
+            step++;
+            System.out.println("Step " + step + ": Click on write article button");
+
+            driverWaits.waitUntilVisible(10, articleCover);
+            driverActions.uploadImage(articleCover, TestData.getRandomImage());
+            step++;
+            System.out.println("Step " + step + ": Upload image");
+
+            driverActions.typeText(articleHeadline, TestData.getRandomFullName());
+            step++;
+            System.out.println("Step " + step + ": Type text: headline");
+
+            driverActions.typeText(writeArticleTextArea, TestData.getRandomParagraph());
+            step++;
+            System.out.println("Step " + step + ": Type text: text");
+
+            driverActions.uploadImage(articleImageUploadField, TestData.getRandomImage());
+            step++;
+            System.out.println("Step " + step + ": Upload image");
+
+            driverActions.upload(articleVideoUploadField, ApplicationSettings.getVideoFolderPath(), TestData.getRandomVideo());
+            step++;
+            System.out.println("Step " + step + ": Upload video");
+
+            driverActions.clickOnWebElementWithActionsClass(publishButton);
+            step++;
+            System.out.println("Step " + step + ": Click on publish button");
+
+            return driverWaits.waitUntilVisible(30, articlePublishedSuccessfullyMessage);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

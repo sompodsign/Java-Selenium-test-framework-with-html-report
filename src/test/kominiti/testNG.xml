@@ -19,7 +19,8 @@
                 <include name="validateHomePageLoadSuccessfully"/>
 <!--                <include name="validateUserCanShareTextOnTimeline"/>-->
 <!--                <include name="validateUserCanShareTextOnTimelineWithImage"/>-->
-                <include name="validateUserCanShareVideosOnTimeline"/>
+<!--                <include name="validateUserCanShareVideosOnTimeline"/>-->
+                <include name="validateUserCanWriteArticleAndShare"/>
             </methods>
         </class>
 

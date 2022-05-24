@@ -73,5 +73,21 @@ public class HomepageTest extends BaseTest {
         }
     }
 
+    @Test
+    public void validateUserCanWriteArticleAndShare() {
+        try {
+            initializeTest("User can write article and share", "This test verifies that the user can write article and share", "Sanity Test");
+
+            HomePage homepage = PagesFactory.getHomePage();
+            boolean result = homepage.writeArticleAndShare();
+
+            Assert.assertTrue(result, "Article is not shared on timeline");
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

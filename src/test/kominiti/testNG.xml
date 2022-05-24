@@ -23,9 +23,22 @@
 <!--                <include name="validateUserCanWriteArticleAndShare"/>-->
             </methods>
         </class>
+
         <class name="main.java.testcases.DashboardPageTest">
             <methods>
                 <include name="validateDashboardPageLoadSuccessfully"/>
+            </methods>
+        </class>
+
+        <class name="main.java.testcases.MarketplacePageTest">
+            <methods>
+                <include name="validateMarketplacePageLoadSuccessfully"/>
+            </methods>
+        </class>
+
+        <class name="main.java.testcases.HotDealsPageTest">
+            <methods>
+                <include name="validateHotDealsPageLoadSuccessfully"/>
             </methods>
         </class>
 

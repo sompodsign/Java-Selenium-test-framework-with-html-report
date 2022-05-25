@@ -23,6 +23,24 @@ public class MarketplacePage extends Base {
     @FindBy(xpath = "//h1[normalize-space()='WELCOME TO THE KOMINITI MARKETPLACE']")
     WebElement marketplacePageHeader;
 
+    @FindBy(xpath = "//input[@placeholder='search for projects']")
+    WebElement searchField;
+
+    @FindBy(xpath = "//input[@placeholder='Category']")
+    WebElement categoryField;
+
+    @FindBy(xpath = "//input[@placeholder='Category']/parent::div/parent::div/following-sibling::div//li")
+    WebElement categoryList;
+
+    @FindBy(xpath = "//li[normalize-space()='Web, Mobile & Software Dev']")
+    WebElement categoryWebMobileSoftwareDev;
+
+    @FindBy(xpath = "//button[normalize-space()='Search']")
+    WebElement searchButton;
+
+    @FindBy(xpath = "//*[contains(@value,'1 Projects found')]")
+    WebElement projectSearchResult;
+
     // END: marketplace page elements
 
 
@@ -44,6 +62,43 @@ public class MarketplacePage extends Base {
 
         } catch (Exception e) {
             return false;
+        }
+    }
+
+    public boolean checkProjectSearchResult() {
+        try {
+            int step = 0;
+
+            driverActions.clickOnWebElementWithActionsClass(searchField);
+            step++;
+            System.out.println("Step " + step + ": Click on search field");
+
+            driverActions.typeText(searchField, "Tester");
+            step++;
+            System.out.println("Step " + step + ": Type 'SQA' in search field");
+
+            driverActions.clickOnWebElementWithActionsClass(categoryField);
+            driverActions.clickOnWebElementWithActionsClass(categoryWebMobileSoftwareDev);
+            step++;
+            System.out.println("Step " + step + ": Click on category field and select 'Web, Mobile & Software Dev'");
+
+            driverActions.clickOnWebElementWithActionsClass(searchButton);
+            step++;
+            System.out.println("Step " + step + ": Click on search button");
+
+            boolean result = driverWaits.waitUntilVisible(20, projectSearchResult);
+            step++;
+            System.out.println("Step " + step + ": Wait until project search result is visible");
+
+            driverActions.browserBack();
+            step++;
+            System.out.println("Step " + step + ": Browser back");
+
+            return result;
+
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 

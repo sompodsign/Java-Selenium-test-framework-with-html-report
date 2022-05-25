@@ -23,5 +23,19 @@ public class MarketplacePageTest extends BaseTest {
         }
     }
 
+    @Test(priority = 2, dependsOnMethods = "validateMarketplacePageLoadSuccessfully")
+    public void validateProjectSearchFunctionalityOnMarketPlace() {
+        try {
+            initializeTest("Project Search functionality test", "This test verifies that the Project Search functionality works", "Sanity Test");
+
+            marketplacePage = PagesFactory.getMarketplacePage();
+            boolean result = marketplacePage.checkProjectSearchResult();
+            Assert.assertTrue(result, "Project Search functionality is not working");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

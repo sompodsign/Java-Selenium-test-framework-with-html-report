@@ -14,33 +14,35 @@
         </methods>
       </class>
 <!--        Homepage testcases-->
-        <class name="main.java.testcases.HomepageTest">
-            <methods>
-                <include name="validateHomePageLoadSuccessfully"/>
+<!--        <class name="main.java.testcases.HomepageTest">-->
+<!--            <methods>-->
+<!--                <include name="validateHomePageLoadSuccessfully"/>-->
 <!--                <include name="validateUserCanShareTextOnTimeline"/>-->
 <!--                <include name="validateUserCanShareTextOnTimelineWithImage"/>-->
 <!--                <include name="validateUserCanShareVideosOnTimeline"/>-->
 <!--                <include name="validateUserCanWriteArticleAndShare"/>-->
-            </methods>
-        </class>
+<!--            </methods>-->
+<!--        </class>-->
 
-        <class name="main.java.testcases.DashboardPageTest">
-            <methods>
-                <include name="validateDashboardPageLoadSuccessfully"/>
-            </methods>
-        </class>
+<!--        <class name="main.java.testcases.DashboardPageTest">-->
+<!--            <methods>-->
+<!--                <include name="validateDashboardPageLoadSuccessfully"/>-->
+<!--            </methods>-->
+<!--        </class>-->
 
         <class name="main.java.testcases.MarketplacePageTest">
             <methods>
                 <include name="validateMarketplacePageLoadSuccessfully"/>
+                <include name="validateProjectSearchFunctionalityOnMarketPlace"/>
+
             </methods>
         </class>
 
-        <class name="main.java.testcases.HotDealsPageTest">
-            <methods>
-                <include name="validateHotDealsPageLoadSuccessfully"/>
-            </methods>
-        </class>
+<!--        <class name="main.java.testcases.HotDealsPageTest">-->
+<!--            <methods>-->
+<!--                <include name="validateHotDealsPageLoadSuccessfully"/>-->
+<!--            </methods>-->
+<!--        </class>-->
 
     </classes>
   </test>

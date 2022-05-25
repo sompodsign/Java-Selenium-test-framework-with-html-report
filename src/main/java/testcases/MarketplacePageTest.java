@@ -37,5 +37,22 @@ public class MarketplacePageTest extends BaseTest {
         }
     }
 
+    @Test(priority = 3, dependsOnMethods = "validateMarketplacePageLoadSuccessfully")
+    public void validateViewAllCategoriesButtonFunctionality() {
+
+        try {
+            initializeTest("View All Categories button functionality test", "This test verifies that the View All Categories button functionality works", "Sanity Test");
+
+            marketplacePage = PagesFactory.getMarketplacePage();
+            boolean result = marketplacePage.checkViewAllCategoriesButtonFunctionality();
+
+            Assert.assertTrue(result, "View All Categories button functionality is not working");
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

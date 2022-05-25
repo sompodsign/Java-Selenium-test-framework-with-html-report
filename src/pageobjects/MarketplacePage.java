@@ -41,6 +41,15 @@ public class MarketplacePage extends Base {
     @FindBy(xpath = "//*[contains(@value,'1 Projects found')]")
     WebElement projectSearchResult;
 
+    @FindBy(xpath = "//button[normalize-space()='View all categories']")
+    WebElement viewAllCategoriesButton;
+
+    @FindBy(xpath = "(//*[contains(text(),'Accounting & Finance')])[3]")
+    WebElement accountingFinanceHeader;
+
+    @FindBy(xpath = "//h3[.='Categories']/parent::div/child::div/child::div/child::div")
+    WebElement categoriesList;
+
     // END: marketplace page elements
 
 
@@ -102,5 +111,26 @@ public class MarketplacePage extends Base {
         }
     }
 
+    public boolean checkViewAllCategoriesButtonFunctionality() {
+        try {
+            int step = 0;
+
+            driverActions.clickOnWebElementWithActionsClass(viewAllCategoriesButton);
+            step++;
+            System.out.println("Step " + step + ": Click on View all categories button");
+
+            boolean result = driverWaits.waitUntilVisible(20, accountingFinanceHeader);
+            step++;
+            System.out.println("Step " + step + ": Wait until category list is visible");
+
+            driverActions.browserBack();
+            step++;
+            System.out.println("Step " + step + ": Browser back");
+
+            return result;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

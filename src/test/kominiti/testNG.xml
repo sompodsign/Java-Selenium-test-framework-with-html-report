@@ -30,19 +30,22 @@
 <!--            </methods>-->
 <!--        </class>-->
 
-        <class name="main.java.testcases.MarketplacePageTest">
-            <methods>
-                <include name="validateMarketplacePageLoadSuccessfully"/>
-                <include name="validateProjectSearchFunctionalityOnMarketPlace"/>
-
-            </methods>
-        </class>
-
-<!--        <class name="main.java.testcases.HotDealsPageTest">-->
+<!--        <class name="main.java.testcases.MarketplacePageTest">-->
 <!--            <methods>-->
-<!--                <include name="validateHotDealsPageLoadSuccessfully"/>-->
+<!--                <include name="validateMarketplacePageLoadSuccessfully"/>-->
+<!--                <include name="validateProjectSearchFunctionalityOnMarketPlace"/>-->
+<!--                <include name="validateViewAllCategoriesButtonFunctionality"/>-->
+
 <!--            </methods>-->
 <!--        </class>-->
+
+        <class name="main.java.testcases.HotDealsPageTest">
+            <methods>
+                <include name="validateHotDealsPageLoadSuccessfully"/>
+                <include name="validateHotDealsSearchFunctionality"/>
+                <include name="validateViewAllCategoriesButtonFunctionality"/>
+            </methods>
+        </class>
 
     </classes>
   </test>
